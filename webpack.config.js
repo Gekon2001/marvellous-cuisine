@@ -1,5 +1,5 @@
-const isProd = process.env.NODE_ENV === 'prod';
-
+const isProd = process.env.NODE_ENV === 'production';
+console.log(process.env);
 const webpack = require('webpack');
 const path = require('path');
 
@@ -25,10 +25,12 @@ module.exports = {
             },
           },
         ],
+        include: [path.resolve(__dirname, 'src')],
       },
       {
         test: /\.(js|jsx)$/i,
         use: ['babel-loader'],
+        include: [path.resolve(__dirname, 'src')],
       },
       {
         test: /\.(png|gif|jpe?g|svg)/i,
@@ -39,6 +41,10 @@ module.exports = {
               name: '[path][name].[ext]',
             },
           },
+        ],
+        include: [
+          path.resolve(__dirname, 'node_modules'),
+          path.resolve(__dirname, 'src'),
         ],
       },
       {
@@ -85,7 +91,7 @@ function populatePlugins() {
     filename: 'index.html',
     template: './src/index.html',
     favicon: '',
-    injext: 'body',
+    inject: 'body',
   }));
   plugins.push(new MiniCssExtractPlugin({
     filename: 'styles.css',

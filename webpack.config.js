@@ -1,5 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production';
-console.log(process.env);
+
 const webpack = require('webpack');
 const path = require('path');
 
@@ -8,10 +8,15 @@ const CleanPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.[hash].js',
+  },
+  resolve: {
+    alias: {
+      Components: path.resolve(__dirname, 'src', 'components'),
+    },
   },
   module: {
     rules: [

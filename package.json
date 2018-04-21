@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server  --config webpack.config.js",
-    "build": "webpack NODE_ENV=prod --config webpack.config.js"
+    "build": "NODE_ENV=production webpack --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -28,8 +28,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "express": "^4.16.3",
+    "express-jwt": "^5.3.1",
+    "mongoose": "^5.0.15",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-router": "^4.2.0"
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
   }
 }

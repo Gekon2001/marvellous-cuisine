@@ -53,18 +53,29 @@ module.exports = {
         ],
       },
       {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]]',
+          },
+        }],
+      },
+      {
         test: /\.(sass|scss)$/i,
         use: [
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              sourceMap: true,
-              importLoader: 2,
+              modules: false,
             },
           },
           'sass-loader',
+        ],
+        include: [
+          path.resolve(__dirname, 'node_modules'),
+          path.resolve(__dirname, 'src'),
         ],
       },
       {
@@ -74,11 +85,13 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              sourceMap: true,
-              importLoader: 2,
+              modules: false,
             },
           },
+        ],
+        include: [
+          path.resolve(__dirname, 'node_modules'),
+          path.resolve(__dirname, 'src'),
         ],
       },
     ],
@@ -86,11 +99,20 @@ module.exports = {
   plugins: populatePlugins(),
   devtool: 'source-map',
   mode: 'none',
+  devServer: {
+    proxy: {
+      '/api': 'http://localhost:3000',
+    },
+    hot: true,
+    noInfo: false,
+    historyApiFallback: true,
+  }
 };
 
 function populatePlugins() {
   const plugins = [];
   isProd && plugins.push(new CleanPlugin(['public']));
+  !isProd && plugins.push(new webpack.HotModuleReplacementPlugin({}));
   plugins.push(new HtmlPlugin({
     title: 'Marvellous Cuisine',
     filename: 'index.html',

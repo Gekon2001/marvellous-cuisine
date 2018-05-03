@@ -1,19 +1,20 @@
 import React from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
+import Login from './Login';
+import Signup from './Signup';
+import { connect } from 'react-redux';
 
-class LoginSignupComponent extends React.Component {
+class LoginSignup extends React.Component {
+
   render() {
     return (
       <div>
-        <Tabs defaultActiveKey={2} id="uncontrolled-tab-example">
-          <Tab eventKey={1} title="Tab 1">
-            <LoginComponent></LoginComponent>
+        <Tabs defaultActiveKey={2} id="login-signup-tabs">
+          <Tab eventKey={1} title="Log In">
+            <Login></Login>
           </Tab>
-          <Tab eventKey={2} title="Tab 2">
-            <SignupComponent></SignupComponent>
-          </Tab>
-          <Tab eventKey={3} title="Tab 3" disabled>
-            Tab 3 content
+          <Tab eventKey={2} title="Sign Up">
+            <Signup></Signup>
           </Tab>
         </Tabs>;
       </div>
@@ -21,7 +22,12 @@ class LoginSignupComponent extends React.Component {
   }
 }
 
-export default LoginSignupComponent;
+function mapStateToProps(state, ownProsp) {
+  return {};
+}
 
+function mapDispatchToProps(dispatch) {
+  return {};
+}
 
-
+export default connect(mapStateToProps, mapDispatchToProps)(LoginSignup);

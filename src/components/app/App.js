@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 
 import Header from 'Components/header/Header';
 import Footer from 'Components/footer/Footer';
@@ -13,9 +12,9 @@ class App extends React.Component {
           <NavigationMenu></NavigationMenu>
         </Header>
         <section>
-          <BrowserRouter >
-
-          </BrowserRouter>
+          <div>
+            {this.props.children}
+          </div>
         </section>
         <Footer>
 

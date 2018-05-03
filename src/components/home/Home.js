@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 class Home extends React.Component {
   constructor(props) {
@@ -8,7 +8,9 @@ class Home extends React.Component {
 
   render() {
     return (
-
+      <div>
+        This is Home Page
+      </div>
     );
   }
 }
@@ -18,7 +20,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
-
+  return {};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

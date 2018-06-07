@@ -34,7 +34,7 @@ const LoginForm = (props) => {
           />
         </div>
 
-        <button type={'submit'} className={'btn btn-default'}>Login</button>
+        <button type={'submit'} className={'btn action-button'}>Login</button>
       </form>
     </div>
   );

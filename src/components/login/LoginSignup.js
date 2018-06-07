@@ -8,13 +8,22 @@ class LoginSignup extends React.Component {
 
   render() {
     return (
-      <div>
-        <Tabs defaultActiveKey={2} id="login-signup-tabs">
-          <Tab eventKey={1} title="Log In">
-            <Login></Login>
+      <div className={'login-signup'}>
+        <Tabs
+          defaultActiveKey={2}
+          id="login-signup-tabs"
+          className={'tabs'}
+          style={{ margin: 'auto', width: '50%' }}>
+          <Tab
+            eventKey={1}
+            title="Log In"
+            >
+            <Login />
           </Tab>
-          <Tab eventKey={2} title="Sign Up">
-            <Signup></Signup>
+          <Tab
+            eventKey={2}
+            title="Sign Up">
+            <Signup />
           </Tab>
         </Tabs>;
       </div>

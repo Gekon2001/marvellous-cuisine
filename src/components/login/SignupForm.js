@@ -13,7 +13,7 @@ const SignupForm = (props) => {
           name={'firstName'}
           value={props.firstName}
           autoComplete={'name'}
-          onChange={props.onChange} />
+          onChange={(e) => props.onChange({ firstName: e.target.value, })} />
       </div>
       <div className={'form-group'}>
         <label htmlFor={'inputLastName'}>Last Name</label>
@@ -25,7 +25,7 @@ const SignupForm = (props) => {
           name={'lastName'}
           value={props.lastName}
           autoComplete={'family-name'}
-          onChange={props.onChange} />
+          onChange={(e) => props.onChange({ lastName: e.target.value, })} />
       </div>
       <div>
         <label htmlFor={'inputEmailSignup'}>Email</label>
@@ -51,7 +51,7 @@ const SignupForm = (props) => {
           onChange={ (e) => props.onChange({ password: e.target.value, }) } />
       </div>
 
-      <button type={'submit'} className={'btn btn-default'}>Signup</button>
+      <button type={'submit'} className={'btn action-button'}>Signup</button>
     </form>
   );
 };

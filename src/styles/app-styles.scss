@@ -1,0 +1,72 @@
+@import 'const';
+
+body {
+  font-family: Quicksand,"Quicksand",sans-serif;
+  background-color: $default-bg-color;
+  color: $default-color;
+}
+
+.action-button {
+  color: $action-button-color;
+  background-color: $action-button-bg-color;
+  text-transform: uppercase;
+  border-radius: 4px;
+  display: inline-block;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.action-button:hover {
+  color: $action-button-color;
+}
+
+form label {
+  text-transform: uppercase;
+}
+
+.main-navbar {
+  width: 95%;
+  margin: auto;
+}
+
+.login-signup {
+  width: 80%;
+}
+
+.form-group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.tabs li.active > a {
+  background-color: $default-bg-color;
+}
+.tabs .active {
+  background-color: $default-bg-color;
+}
+
+
+//footer styles
+.app-footer {
+  .footer-column-container {
+    margin: auto;
+    border-top: solid 1px $border-color;
+    max-width: 930px;
+  }
+}
+
+.footer-column-container li {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.social-block > div {
+  display: inline-block;
+  padding: 2em;
+}
+
+.links-block {
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
+}

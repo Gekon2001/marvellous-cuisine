@@ -1,4 +1,4 @@
-const isProd = process.env.NODE_ENV === 'prod';
+const isProd = process.env.NODE_ENV === 'production';
 
 const webpack = require('webpack');
 const path = require('path');
@@ -8,10 +8,15 @@ const CleanPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.[hash].js',
+  },
+  resolve: {
+    alias: {
+      Components: path.resolve(__dirname, 'src', 'components'),
+    },
   },
   module: {
     rules: [
@@ -25,10 +30,12 @@ module.exports = {
             },
           },
         ],
+        include: [path.resolve(__dirname, 'src')],
       },
       {
         test: /\.(js|jsx)$/i,
         use: ['babel-loader'],
+        include: [path.resolve(__dirname, 'src')],
       },
       {
         test: /\.(png|gif|jpe?g|svg)/i,
@@ -40,6 +47,19 @@ module.exports = {
             },
           },
         ],
+        include: [
+          path.resolve(__dirname, 'node_modules'),
+          path.resolve(__dirname, 'src'),
+        ],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]]',
+          },
+        }],
       },
       {
         test: /\.(sass|scss)$/i,
@@ -48,12 +68,14 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              sourceMap: true,
-              importLoader: 2,
+              modules: false,
             },
           },
           'sass-loader',
+        ],
+        include: [
+          path.resolve(__dirname, 'node_modules'),
+          path.resolve(__dirname, 'src'),
         ],
       },
       {
@@ -63,11 +85,13 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              sourceMap: true,
-              importLoader: 2,
+              modules: false,
             },
           },
+        ],
+        include: [
+          path.resolve(__dirname, 'node_modules'),
+          path.resolve(__dirname, 'src'),
         ],
       },
     ],
@@ -75,17 +99,26 @@ module.exports = {
   plugins: populatePlugins(),
   devtool: 'source-map',
   mode: 'none',
+  devServer: {
+    proxy: {
+      '/api': 'http://localhost:3000',
+    },
+    hot: true,
+    noInfo: false,
+    historyApiFallback: true,
+  }
 };
 
 function populatePlugins() {
   const plugins = [];
   isProd && plugins.push(new CleanPlugin(['public']));
+  !isProd && plugins.push(new webpack.HotModuleReplacementPlugin({}));
   plugins.push(new HtmlPlugin({
     title: 'Marvellous Cuisine',
     filename: 'index.html',
     template: './src/index.html',
     favicon: '',
-    injext: 'body',
+    inject: 'body',
   }));
   plugins.push(new MiniCssExtractPlugin({
     filename: 'styles.css',

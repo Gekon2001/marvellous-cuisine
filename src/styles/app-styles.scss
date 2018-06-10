@@ -46,6 +46,11 @@ form label {
   background-color: $default-bg-color;
 }
 
+//right header styles
+nav .svg-inline--fa {
+  font-size: 15px;
+  margin-right: 10px;
+}
 
 //footer styles
 .app-footer {
@@ -57,20 +62,43 @@ form label {
 }
 
 .footer-column-container li {
-  display: inline-block;
   vertical-align: top;
 }
 
 .social-block > div {
-  display: inline-block;
   padding: 2em;
 }
 
 .links-block {
   border-left: 1px solid $border-color;
   border-right: 1px solid $border-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+.links-block a {
+  margin-top: 20px;
+  display: block;
+  align-self: center;
+  color: $default-color;
+  opacity: 0.8;
 }
 
+.links-block a:hover{
+  cursor: pointer;
+  color: $default-color;
+  text-decoration: none;
+  opacity: 1;
+}
+
+.social-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+//gallery styles
 .slick-arrow.slick-next {
   right: 25px;
   z-index: 2;
@@ -87,9 +115,11 @@ form label {
   display: flex;
   margin-left: 20px;
 }
+
 .slick-dots>li {
   width:10px;
 }
+
 .slick-slide img {
   width: 100%;
 }

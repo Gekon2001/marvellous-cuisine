@@ -17,7 +17,7 @@ export default function Router() {
       <App>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path='/gallery' component={Gallery} />
+          <Route path='/gallery' component={Gallery} />
           <Route path='/login' component={LoginSignup} />
           <Route path={'*'} component={NotFound} />
         </Switch>

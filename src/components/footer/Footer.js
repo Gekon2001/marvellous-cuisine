@@ -7,7 +7,7 @@ export default function Footer(props) {
   return (
     <footer className={'app-footer'}>
       <ul className={'footer-column-container'}>
-        <li className={'contacts-block col-sm-offset-3 col-sm-2'}>
+        <li className={'contacts-block col-sm-5'}>
           Contacts will be here
         </li>
         <li className={'links-block col-sm-2'}>
@@ -24,15 +24,15 @@ export default function Footer(props) {
             <a>About</a>
           </div>
         </li>
-        <li className={'social-block col-sm-2'}>
+        <li className={'social-block col-sm-5'}>
           <div>
-            <FontAwesomeIcon icon={faFacebook} />
+            <FontAwesomeIcon icon={faFacebook} style={{fontSize: 40}}/>
           </div>
           <div>
-            <FontAwesomeIcon icon={faInstagram} />
+            <FontAwesomeIcon icon={faInstagram} style={{fontSize: 40}}/>
           </div>
           <div>
-            <FontAwesomeIcon icon={faTwitter} />
+            <FontAwesomeIcon icon={faTwitter} style={{fontSize: 40}}/>
           </div>
         </li>
       </ul>

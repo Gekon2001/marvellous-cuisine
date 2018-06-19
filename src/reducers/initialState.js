@@ -7,4 +7,7 @@ const user = {
 export default {
   loading: false,
   user,
+  products: [],
+  contacts: [],
+  order: {},
 };

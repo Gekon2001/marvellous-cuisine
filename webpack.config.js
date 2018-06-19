@@ -11,11 +11,14 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'public'),
+    // publicPath: '/public/',
     filename: 'bundle.[hash].js',
   },
   resolve: {
     alias: {
       Components: path.resolve(__dirname, 'src', 'components'),
+      Actions: path.resolve(__dirname, 'src', 'actions'),
+      Reducers: path.resolve(__dirname, 'src', 'reducers'),
     },
   },
   module: {
@@ -101,7 +104,10 @@ module.exports = {
   mode: 'none',
   devServer: {
     proxy: {
-      '/api': 'http://localhost:3000',
+      '/api': {
+        target: 'http://localhost:3000',
+        pathRewrite: { '^/api': ''},
+      },
     },
     hot: true,
     noInfo: false,

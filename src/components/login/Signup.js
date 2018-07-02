@@ -1,55 +1,55 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import { signup } from "../../actions/authActions";
+import axois from 'axios';
 
 import SignupForm from './SignupForm';
 
 
-class Signup extends React.Component {
+export default class Signup extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      password: '',
+    };
   }
 
+  onChange = (data) => {
+    this.setState({...data});
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const {firstName, lastName, email, phone, password } = this.state;
+    axois.post('/api/user', {
+      firstName,
+      lastName,
+      email,
+      phone,
+      password,
+    }).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    });
+    return false;
+  };
+
   render() {
-    const { firstName, lastName, email, password, onSubmit, onChange } = this.props;
+    const { firstName, lastName, email, phone, password } = this.state;
     return (
       <SignupForm
-        onSubmit={onSubmit}
-        onChange={onChange}
+        onSubmit={ this.onSubmit }
+        onChange={ this.onChange }
         firstName={firstName}
         lastName={lastName}
         email={email}
+        phone={phone}
         password={password}
       />
     );
   }
 }
 
-function mapStateToProps(state) {
-  const { firstName, lastName, email, phone, password } = state.user;
-  return {
-    firstName,
-    lastName,
-    email,
-    phone,
-    password,
-  };
-}
-
-function mapDispatchToProps(dispatch, ownProps) {
-  const { firstName, lastName, email, phone } = ownProps;
-
-  return {
-    onSubmit(e) {
-      e.preventDefault();
-      dispatch(signup({ firstName, lastName, email, phone }));
-      return false;
-    },
-    onChange(data) {
-      console.log(data);
-    }
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);

@@ -1,6 +1,8 @@
 import {
   USER_SIGNUP,
   USER_LOGIN,
+  SHOW_AUTH_MODAL,
+  HIDE_AUTH_MODAL,
   USER_LOGIN_SUCCESS,
   USER_SIGNUP_SUCCESS,
 } from './actionTypes';
@@ -8,20 +10,28 @@ import {
 
 import axios from 'axios';
 
-export function login(credentials) {
+export function login(creds) {
   return {
     type: USER_LOGIN,
-    credentials,
+    creds,
   };
 };
 
-export function signup(credentials) {
-  return (dispatch, getState) => {
-    axios.post('/api/user', credentials).then((res) => {
-      dispatch({ type: USER_SIGNUP_SUCCESS, res });
-      console.log(res);
-    }).catch((error) => {
-      console.log(error);
-    })
+export function signup(creds) {
+  return {
+    type: USER_SIGNUP,
+    creds,
   };
 };
+
+export function showAuthModal() {
+  return {
+    type: SHOW_AUTH_MODAL,
+  };
+}
+
+export function hideAuthModal() {
+  return {
+    type: HIDE_AUTH_MODAL,
+  };
+}

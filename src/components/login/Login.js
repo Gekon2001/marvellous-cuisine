@@ -3,19 +3,16 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import LoginForm from './LoginForm';
 
-
-class Login extends React.Component {
+export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       password: '',
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     axios.post('/user/login').then((response) => {
       if (response.error) {
@@ -30,7 +27,7 @@ class Login extends React.Component {
     return false;
   };
 
-  handleChange(state) {
+  onChange = (state) => {
     this.setState(state);
   };
 
@@ -39,20 +36,9 @@ class Login extends React.Component {
     return (
       <LoginForm
         onSubmit={this.handleSubmit}
-        onChange={this.handleChange}
+        onChange={this.onChange}
         email={email}
         password={password} />
     );
   };
 }
-
-
-function mapStateToProps() {
-  return {};
-}
-
-function mapDispatchToProps() {
-  return {};
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);

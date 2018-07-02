@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import rootReducer from './reducers/index';
+import rootReducer from './reducers';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';

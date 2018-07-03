@@ -1,55 +1,69 @@
 import React from 'react';
-import axois from 'axios';
-
-import SignupForm from './SignupForm';
-
 
 export default class Signup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      password: '',
-    };
+
   }
-
-  onChange = (data) => {
-    this.setState({...data});
-  };
-
-  onSubmit = (e) => {
-    e.preventDefault();
-    const {firstName, lastName, email, phone, password } = this.state;
-    axois.post('/api/user', {
-      firstName,
-      lastName,
-      email,
-      phone,
-      password,
-    }).then((res) => {
-      console.log(res);
-    }).catch((err) => {
-      console.log(err);
-    });
-    return false;
-  };
 
   render() {
-    const { firstName, lastName, email, phone, password } = this.state;
+    const { onSubmit } = this.props;
     return (
-      <SignupForm
-        onSubmit={ this.onSubmit }
-        onChange={ this.onChange }
-        firstName={firstName}
-        lastName={lastName}
-        email={email}
-        phone={phone}
-        password={password}
-      />
+      <form onSubmit={onSubmit}>
+        <div className={'form-group'}>
+          <label htmlFor='inputFirstName'>First Name</label>
+          <input
+            type={'text'}
+            id={'inputFirstName'}
+            placeholder={'First Name'}
+            className={'form-control'}
+            name={'firstName'}
+            autoComplete={'first-name'} />
+        </div>
+        <div className={'form-group'}>
+          <label htmlFor={'inputLastName'}>Last Name</label>
+          <input
+            type={'text'}
+            id={'inputLastName'}
+            placeholder={'Last Name'}
+            className={'form-control'}
+            name={'lastName'}
+            autoComplete={'last-name'} />
+        </div>
+        <div className={'form-group'}>
+          <label htmlFor={'inputEmailSignup'}>Email</label>
+          <input
+            type={'email'}
+            id={'inputEmailSignup'}
+            placeholder={'Email'}
+            className={'form-control'}
+            name={'email'}
+            autoComplete={'email'} />
+        </div>
+        <div className={'form-group'}>
+          <label htmlFor={'inputPhoneSignup'}>Email</label>
+          <input
+            type={'phone'}
+            id={'inputPhoneSignup'}
+            placeholder={'Phone'}
+            className={'form-control'}
+            name={'phone'}
+            autoComplete={'phone'} />
+        </div>
+        <div className={'form-group'}>
+          <label htmlFor={'inputPasswordSignup'}>Password</label>
+          <input
+            type={'password'}
+            id={'inputPasswordSignup'}
+            placeholder={'Password'}
+            className={'form-control'}
+            name={'password'}
+            autoComplete={'password'} />
+        </div>
+
+        <button type={'submit'} className={'btn action-button'}>Signup</button>
+      </form>
     );
   }
-}
+};
 

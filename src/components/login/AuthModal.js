@@ -8,15 +8,10 @@ import { hideAuthModal } from 'Actions/authActions';
 class AuthModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      show: false,
-      title: 'Sign up',
-      activeTab: 'signup-tab',
-    };
   }
 
   render() {
-    const { show, onHide, onShow} = this.props;
+    const { show, onHide, handleSignin, handleSignup, signinErrors, signupErrors } = this.props;
 
     return (
       <Modal show={show} onHide={onHide}>
@@ -24,10 +19,14 @@ class AuthModal extends React.Component {
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <LoginSignup />
+          <LoginSignup
+            handleSignin={handleSignin}
+            handleSignup={handleSignup}
+            signinErrors={signinErrors}
+            signupErrors={signupErrors} />
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.handleClose}>Close</Button>
+          <Button onClick={onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -37,6 +36,8 @@ class AuthModal extends React.Component {
 const mapStateToProps = (state) => {
   return {
     show: state.auth.showAuthModal,
+    signinErrors: {},
+    signupErrors: {},
   };
 };
 
@@ -45,6 +46,16 @@ const mapDispatchToProps = (dispatch) => {
     onHide: () => {
       dispatch(hideAuthModal())
     },
+    handleSignin(e) {
+      e.preventDefault();
+      //TODO: implement
+      return false;
+    },
+    handleSignup(e) {
+      e.preventDefault();
+      //TODO: implement
+      return false;
+    }
   };
 };
 

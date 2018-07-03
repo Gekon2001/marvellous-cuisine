@@ -3,6 +3,8 @@ import {
   USER_SIGNUP,
   USER_LOGIN_SUCCESS,
   USER_SIGNUP_SUCCESS,
+  USER_SIGNUP_FAILED,
+  USER_LOGIN_FAILED,
   SHOW_AUTH_MODAL,
   HIDE_AUTH_MODAL,
 } from '../actions/actionTypes';
@@ -10,18 +12,16 @@ import {
 import initialState from '../reducers/initialState';
 
 
-export function authReducer(state=initialState, action) {
+export function authReducer(state=initialState.auth, action) {
   switch(action.type) {
     case SHOW_AUTH_MODAL: {
-      const { auth } = state;
-      return Object.assign({}, { auth }, { showAuthModal: true });
+      return Object.assign({}, state, { showAuthModal: true });
     }
     case HIDE_AUTH_MODAL: {
-      const { auth } = state;
-      return Object.assign({}, { auth }, { showAuthModal: false });
+      return Object.assign({}, state, { showAuthModal: false });
     }
     default: {
-      return state.auth;
+      return state;
     }
   }
 };

@@ -8,7 +8,7 @@ const user = {
 
 const auth = {
   showAuthModal: false,
-  token: '',
+  user
 };
 
 const order = {
@@ -16,9 +16,6 @@ const order = {
 };
 
 export default {
-  loading: false,
-  showAuth: false,
-  user,
   auth,
   products: [],
   contacts: [],

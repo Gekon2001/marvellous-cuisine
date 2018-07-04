@@ -19,6 +19,7 @@ module.exports = {
       Components: path.resolve(__dirname, 'src', 'components'),
       Actions: path.resolve(__dirname, 'src', 'actions'),
       Reducers: path.resolve(__dirname, 'src', 'reducers'),
+      Utils: path.resolve(__dirname, 'src', 'utils'),
     },
   },
   module: {
@@ -106,8 +107,9 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
-        pathRewrite: { '^/api': ''},
-        secure: false,
+        // target: 'https://marvellous-cuisine.herokuapp.com',
+        // pathRewrite: { '^/api': ''},
+        // secure: false,
       },
     },
     hot: true,

@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import { Modal, Button } from 'react-bootstrap';
 import LoginSignup from './LoginSignup';
-import { hideAuthModal } from 'Actions/authActions';
+import { hideAuthModal, userSignedIn, userSignedUp } from 'Actions/authActions';
+
+import utils from 'Utils';
 
 class AuthModal extends React.Component {
   constructor(props) {
@@ -25,9 +27,9 @@ class AuthModal extends React.Component {
             signinErrors={signinErrors}
             signupErrors={signupErrors} />
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={onHide}>Close</Button>
-        </Modal.Footer>
+        {/*<Modal.Footer>*/}
+          {/*<Button onClick={onHide}>Close</Button>*/}
+        {/*</Modal.Footer>*/}
       </Modal>
     );
   }
@@ -46,15 +48,19 @@ const mapDispatchToProps = (dispatch) => {
     onHide: () => {
       dispatch(hideAuthModal())
     },
-    handleSignin(e) {
-      e.preventDefault();
-      //TODO: implement
-      return false;
+    async handleSignin(creds) {
+      const { error, data } = await utils.request.post(`/api/auth/signin`, creds);
+      if (error)
+        return alert(JSON.stringify(error, null, 2));
+
+      dispatch(userSignedIn(data));
     },
-    handleSignup(e) {
-      e.preventDefault();
-      //TODO: implement
-      return false;
+    async handleSignup(userData) {
+      const { error, data } = await utils.request.post(`/api/auth/signup`, userData);
+      if (error)
+        return alert(JSON.stringify(error, null, 2));
+
+      dispatch(userSignedUp(data));
     }
   };
 };

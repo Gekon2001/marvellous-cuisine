@@ -1,15 +1,38 @@
 import React from 'react';
+import initialState from 'Reducers/initialState';
 
 export default class Signup extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = Object.assign({}, initialState.auth.user, { confirmPassword: '' });
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    return false;
+  };
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
-    const { onSubmit } = this.props;
+    const { handleSubmit, handleChange } = this;
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      password,
+      confirmPassword,
+    } = this.state;
+
     return (
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className={'form-group'}>
           <label htmlFor='inputFirstName'>First Name</label>
           <input
@@ -18,7 +41,9 @@ export default class Signup extends React.Component {
             placeholder={'First Name'}
             className={'form-control'}
             name={'firstName'}
-            autoComplete={'first-name'} />
+            value={firstName}
+            autoComplete={'first-name'}
+            onChange={handleChange} />
         </div>
         <div className={'form-group'}>
           <label htmlFor={'inputLastName'}>Last Name</label>
@@ -28,7 +53,9 @@ export default class Signup extends React.Component {
             placeholder={'Last Name'}
             className={'form-control'}
             name={'lastName'}
-            autoComplete={'last-name'} />
+            value={lastName}
+            autoComplete={'last-name'}
+            onChange={handleChange} />
         </div>
         <div className={'form-group'}>
           <label htmlFor={'inputEmailSignup'}>Email</label>
@@ -38,7 +65,9 @@ export default class Signup extends React.Component {
             placeholder={'Email'}
             className={'form-control'}
             name={'email'}
-            autoComplete={'email'} />
+            value={email}
+            autoComplete={'email'}
+            onChange={handleChange} />
         </div>
         <div className={'form-group'}>
           <label htmlFor={'inputPhoneSignup'}>Email</label>
@@ -48,7 +77,9 @@ export default class Signup extends React.Component {
             placeholder={'Phone'}
             className={'form-control'}
             name={'phone'}
-            autoComplete={'phone'} />
+            value={phone}
+            autoComplete={'phone'}
+            onChange={handleChange} />
         </div>
         <div className={'form-group'}>
           <label htmlFor={'inputPasswordSignup'}>Password</label>
@@ -58,7 +89,22 @@ export default class Signup extends React.Component {
             placeholder={'Password'}
             className={'form-control'}
             name={'password'}
-            autoComplete={'password'} />
+            value={password}
+            autoComplete={'password'}
+            onChange={handleChange} />
+        </div>
+
+        <div className={'form-group'}>
+          <label htmlFor={'inputConfirmPasswordSignup'}>Confirm Password</label>
+          <input
+            type={'password'}
+            id={'inputConfirmPasswordSignup'}
+            placeholder={'Confirm Password'}
+            className={'form-control'}
+            name={'confirmPassword'}
+            value={confirmPassword}
+            autoComplete={'confirm-password'}
+            onChange={handleChange} />
         </div>
 
         <button type={'submit'} className={'btn action-button'}>Signup</button>

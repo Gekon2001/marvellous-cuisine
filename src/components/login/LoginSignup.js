@@ -8,7 +8,7 @@ export default function LoginSignup(props) {
   return (
     <div className={'login-signup'}>
       <Tabs
-        defaultActiveKey={2}
+        defaultActiveKey={1}
         id="login-signup-tabs"
         className={'tabs'}
         style={{margin: 'auto', width: '50%'}}>

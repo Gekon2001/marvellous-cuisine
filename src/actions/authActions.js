@@ -1,26 +1,24 @@
 import {
-  USER_SIGNUP,
-  USER_LOGIN,
   SHOW_AUTH_MODAL,
   HIDE_AUTH_MODAL,
-  USER_LOGIN_SUCCESS,
+  USER_SIGNIN_SUCCESS,
   USER_SIGNUP_SUCCESS,
 } from './actionTypes';
 
 
 import axios from 'axios';
 
-export function login(creds) {
+export function userSignedIn(userData) {
   return {
-    type: USER_LOGIN,
-    creds,
+    type: USER_SIGNUP_SUCCESS,
+    payload: userData,
   };
 };
 
-export function signup(creds) {
+export function userSignedUp(userData) {
   return {
-    type: USER_SIGNUP,
-    creds,
+    type: USER_SIGNIN_SUCCESS,
+    payload: userData,
   };
 };
 

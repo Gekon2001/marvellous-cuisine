@@ -1,9 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { Navbar, Nav, NavItem, FormControl } from 'react-bootstrap';
+
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faSearch, faShoppingCart, faUser} from '@fortawesome/fontawesome-free-solid';
+import { showAuthModal} from "Actions/authActions";
 
-export default class Header extends Component {
+class Header extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -35,6 +38,7 @@ export default class Header extends Component {
   };
 
   render() {
+    const { login } = this.props;
     return (
       <Navbar>
         <Navbar.Header>
@@ -48,7 +52,8 @@ export default class Header extends Component {
           <NavItem eventKey={3} href={'/blog'}>Blog</NavItem>
           <NavItem eventKey={4} href={'/about'}>About us</NavItem>
         </Nav>
-        {this.state.inputVisible ?
+        {this.state.inputVisible
+          ?
           <Nav pullRight className={'search-input'}>
             <FormControl
               type="text"
@@ -67,9 +72,9 @@ export default class Header extends Component {
               <FontAwesomeIcon icon={faShoppingCart}/>
               0 items
             </NavItem>
-            <NavItem eventKey={7} href="#">
+            <NavItem eventKey={7} href="#" onSelect={login} >
               <FontAwesomeIcon icon={faUser} />
-              Login
+              Login/Signup
             </NavItem>
           </Nav>
         }
@@ -77,3 +82,19 @@ export default class Header extends Component {
     );
   }
 };
+
+const mapStateToProps = (state) => {
+  return {
+
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: () => {
+      return dispatch(showAuthModal());
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

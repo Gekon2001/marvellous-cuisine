@@ -1,10 +1,23 @@
 const user = {
-  first_name: '',
-  last_name: '',
-  token: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  password: '',///!!!
+};
+
+const auth = {
+  showAuthModal: false,
+  user
+};
+
+const order = {
+
 };
 
 export default {
-  loading: false,
-  user,
+  auth,
+  products: [],
+  contacts: [],
+  order,
 };

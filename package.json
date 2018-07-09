@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_PATH=./server/node_modules babel-node ./server/server.js --config ./.babelrc-node",
-    "dev": "webpack-dev-server  --config webpack.config.js",
+    "dev": "webpack-dev-server  --config webpack.config.js --progress",
     "build": "NODE_ENV=production webpack --config webpack.config.js"
   },
   "author": "Vladimir Chagin",
@@ -49,6 +49,7 @@
     "react": "^16.4.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.0",
+    "react-dropzone": "^4.2.11",
     "react-paginate": "^5.2.3",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
@@ -56,6 +57,7 @@
     "react-slick": "^0.23.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "validator": "^10.4.0"
   }
 }

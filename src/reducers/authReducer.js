@@ -1,20 +1,33 @@
-import { USER_LOGIN_SUCCESS, USER_SIGNUP_SUCCESS } from '../actions/actionTypes';
-import initialState from '../reducers/initialState';
+import {
+  USER_LOGIN,
+  USER_SIGNUP,
+  USER_SIGNIN_SUCCESS,
+  USER_SIGNUP_SUCCESS,
+  USER_SIGNUP_FAILED,
+  USER_LOGIN_FAILED,
+  SHOW_AUTH_MODAL,
+  HIDE_AUTH_MODAL,
+} from '../actions/actionTypes';
 
-export function loginReducer(state=initialState, action) {
-  switch (action.type) {
-    case USER_LOGIN_SUCCESS: {
-      return state;
+import initialState from 'Reducers/initialState';
+
+
+export function authReducer(state=initialState.auth, action) {
+  switch(action.type) {
+    case USER_SIGNIN_SUCCESS: {
+      return Object.assign({}, state, { showAuthModal: false, user: action.payload });
     }
-  }
-  return state;
-};
-
-export function signupReducer(state=initialState, action) {
-  switch (action.type) {
     case USER_SIGNUP_SUCCESS: {
+      return Object.assign({}, state, { showAuthModal: false, user: action.payload });
+    }
+    case SHOW_AUTH_MODAL: {
+      return Object.assign({}, state, { showAuthModal: true });
+    }
+    case HIDE_AUTH_MODAL: {
+      return Object.assign({}, state, { showAuthModal: false });
+    }
+    default: {
       return state;
     }
   }
-  return state;
 };

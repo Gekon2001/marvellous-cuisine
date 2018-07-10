@@ -106,8 +106,8 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
-        // target: 'https://marvellous-cuisine.herokuapp.com',
+        // target: 'http://localhost:3000',
+        target: 'https://marvellous-cuisine.herokuapp.com',
         // pathRewrite: { '^/api': ''},
         // secure: false,
       },

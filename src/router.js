@@ -9,7 +9,7 @@ import Home from 'Components/home/Home';
 import NotFound from 'Components/notfound/NotFound';
 import Gallery from 'Components/gallery/Gallery';
 import Shop from 'Components/shop/Shop';
-import EditProduct from 'Components/product/EditProduct';
+import Admin from 'Components/admin/Admin';
 
 const history = createBrowserHistory();
 
@@ -19,8 +19,7 @@ export default function Router() {
       <App>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/admin/product' component={EditProduct} />
-          <Route path='/admin' component={EditProduct} />
+          <Route path='/admin' component={Admin} />
           <Route path='/gallery' component={Gallery} />
           <Route path='/login' component={LoginSignup} />
           <Route path='/shop' component={Shop} />

@@ -101,7 +101,7 @@ module.exports = {
     ],
   },
   plugins: populatePlugins(),
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   mode: 'none',
   devServer: {
     proxy: {

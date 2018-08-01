@@ -15,9 +15,12 @@ const order = {
 
 };
 
+const categories = [];
+
 export default {
   auth,
   products: [],
   contacts: [],
   order,
+  categories,
 };

@@ -50,10 +50,21 @@ export default class ImageUploader extends React.Component {
       if (error)
         return console.error(error);
 
+
+      this.props.onChange({
+        changeType: 'ADD',
+        id: result.id,
+        url: result.url,
+      });
+
       setTimeout(uploadNext, 100);
     };
 
     uploadNext();
+  };
+
+  handleDelete = async () => {
+    //TODO: implement
   };
 
   render() {

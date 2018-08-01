@@ -1,12 +1,11 @@
 import React from 'react';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/fontawesome-free-brands';
 
 
 export default function Footer(props) {
   return (
-    <footer className={'app-footer'}>
-      <ul className={'footer-column-container'}>
+    <footer className={'app-footer container'}>
+      <ul className={'footer-column-container row'}>
         <li className={'contacts-block col-sm-5'}>
           Contacts will be here
         </li>
@@ -26,18 +25,18 @@ export default function Footer(props) {
         </li>
         <li className={'social-block col-sm-5'}>
           <div>
-            <FontAwesomeIcon icon={faFacebook} style={{fontSize: 40}}/>
+            <i className={'fab fa-facebook-square'}></i>
           </div>
           <div>
-            <FontAwesomeIcon icon={faInstagram} style={{fontSize: 40}}/>
+            <i className={'fab fa-instagram'}></i>
           </div>
           <div>
-            <FontAwesomeIcon icon={faTwitter} style={{fontSize: 40}}/>
+            <i className={'fab fa-twitter'}></i>
           </div>
         </li>
       </ul>
       <div className={'subfooter'}>
-
+        subfooter
       </div>
     </footer>
   );

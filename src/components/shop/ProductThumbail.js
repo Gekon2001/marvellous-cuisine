@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Modal } from 'react-bootstrap';
-import { faLongArrowAltRight} from '@fortawesome/fontawesome-free-solid';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 
 class ProductThumbail extends React.Component {

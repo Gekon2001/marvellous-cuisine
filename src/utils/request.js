@@ -11,23 +11,37 @@ const _axios = axios.create({
 });
 
 export default {
-  post(url, params) {
-    return new Promise((resolve) => {
-      _axios.post(url, params).then(({ data }) => {
-        resolve({ data });
-      }).catch((error) => {
-        resolve({ error: error.response.data });
-      });
-    });
+  async post(url, params) {
+    try {
+      const { data } = await _axios.post(url, params);
+      return data;
+    } catch(error) {
+      return error.response.data;
+    }
   },
-  get(url, params) {
-
+  async get(url, params) {
+    try {
+      const { data } = await _axios.get(url, params);
+      return data;
+    } catch(error) {
+      return error.response.data;
+    }
   },
-  patch(url, params) {
-
+  async patch(url, params) {
+    try {
+      const { data } = await _axios.patch(url, params);
+      return data;
+    } catch(error) {
+      return error.response.data;
+    }
   },
-  put(url, params) {
-
+  async put(url, params) {
+    try {
+      const { data } = await _axios.put(url, params);
+      return data;
+    } catch(error) {
+      return error.response.data;
+    }
   },
   async uploadFile(url, file, progressCb) {
     const data = new FormData();

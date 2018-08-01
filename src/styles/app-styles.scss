@@ -1,73 +1,113 @@
+@import '_reset';
 @import 'const';
+@import 'admin';
+
+@import '~bootstrap/scss/bootstrap-grid';
+
 
 body {
-  font-family: Quicksand,"Quicksand",sans-serif;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+
   background-color: $default-bg-color;
   color: $default-color;
+
+  input, select, textarea {
+    background-color: $default-bg-color;
+    outline: none;
+    border: 1px solid $border-color;
+    color: $default-color-dark;
+    border-radius: 0;
+    padding: .25em .45em;
+    font-size: 12px;
+    width: 100%;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    cursor: pointer;
+    padding: .25em .45em;
+    font-size: 12px;
+    letter-spacing: .1em;
+    color: #fff;
+    background-color: $action-button-bg-color;
+    border-radius: .3em;
+    text-transform: uppercase;
+    display: inline-block;
+    border: none;
+    outline: none;
+    vertical-align: baseline;
+    margin: .2em 1em;
+  }
+
+  button[disabled] {
+    cursor: default;
+    background-color: #eee;
+  }
+
+
+  #app-root{
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  nav.app-nav {
+    width: 95%;
+    margin: 0 auto;
+    padding: 1em;
+
+    border-bottom: 1px solid $default-color-dark;
+
+    display: flex;
+    flex-direction: row;
+
+    ul {
+      list-style: none;
+      padding: .5em 1em;
+
+      li {
+        display: inline-block;
+        margin: 0 1em;
+      }
+    }
+
+    .header-menu {
+      i {
+        margin-right: .2em;
+      }
+    }
+
+    .header, .header-menu, links {
+      height: 2em;
+      padding: .5em;
+      margin: .5em;
+    }
+
+    .links {
+      li {
+        :hover {
+          background-color: $default-bg-dark-color;
+        }
+      }
+    }
+
+  }
+
+  .form-controls-row {
+    margin: 1em .5em;
+
+  }
+
+  .form-buttons-row {
+    margin: 1.5em .5em;
+  }
 }
 
-.action-button {
-  color: $action-button-color;
-  background-color: $action-button-bg-color;
-  text-transform: uppercase;
-  border-radius: 4px;
-  display: inline-block;
-  letter-spacing: 0.1em;
-  font-weight: 600;
-  font-size: 12px;
-}
 
-.action-button:hover {
-  color: $action-button-color;
-}
-
-form label {
-  text-transform: uppercase;
-}
-
-.main-navbar {
-  width: 95%;
-  margin: auto;
-}
-
-.login-signup {
-  width: 80%;
-}
-
-.form-group {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.tabs li.active > a {
-  background-color: $default-bg-color;
-}
-.tabs .active {
-  background-color: $default-bg-color;
-}
-
-//right header styles
-nav .svg-inline--fa {
-  font-size: 15px;
-  margin-right: 10px;
-}
-
-input.form-control {
-  position: relative;
-  top: 10px;
-  right:10px;
-  height: 30px;
-  min-width: 270px;
-  border-radius: 20px;
-}
-
-.search-input .svg-inline--fa.fa-search.fa-w-16 {
-  position: relative;
-  opacity: 0.48;
-  color: black;
-  left:234px;
-  bottom: 15px;
-}
 
 //footer styles
 .app-footer {
@@ -84,6 +124,9 @@ input.form-control {
 
 .social-block > div {
   padding: 2em;
+  i {
+    font-size: 20px;
+  }
 }
 
 .links-block {

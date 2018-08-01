@@ -79,7 +79,7 @@ module.exports = {
         ],
         include: [
           path.resolve(__dirname, 'node_modules'),
-          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'src', 'styles'),
         ],
       },
       {
@@ -95,7 +95,7 @@ module.exports = {
         ],
         include: [
           path.resolve(__dirname, 'node_modules'),
-          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'src', 'styles'),
         ],
       },
     ],
@@ -106,11 +106,15 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        // target: 'http://localhost:3000',
-        target: 'https://marvellous-cuisine.herokuapp.com',
+        target: 'http://localhost:3000',
+        // target: 'https://marvellous-cuisine.herokuapp.com',
         // pathRewrite: { '^/api': ''},
         // secure: false,
       },
+    },
+    // watch: true,
+    watchOptions: {
+      ignored: /node_modules/,
     },
     hot: true,
     noInfo: false,

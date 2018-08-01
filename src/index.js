@@ -10,8 +10,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import Router from './router';
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import './styles/app-styles.scss';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

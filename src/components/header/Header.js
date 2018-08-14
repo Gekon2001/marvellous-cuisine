@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { showAuthModal} from "Actions/authActions";
+import { showAuthModal } from 'Actions/authActions';
+import { showCart } from 'Actions/cartActions';
 import Menu from './Menu';
 
 class Header extends React.Component {
@@ -22,7 +23,7 @@ class Header extends React.Component {
           <li><Link to={'/blog'}>Blog</Link></li>
           <li><Link to={'/about'}>About</Link></li>
         </ul>
-        <Menu />
+        <Menu login={this.props.login} showCart={this.props.showCart}/>
       </nav>
     );
   }
@@ -38,7 +39,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     login: () => {
       return dispatch(showAuthModal());
-    }
+    },
+    showCart: () => {
+      return dispatch(showCart())
+    },
   }
 };
 

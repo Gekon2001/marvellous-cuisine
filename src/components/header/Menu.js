@@ -26,14 +26,6 @@ export default class Menu extends React.Component {
     });
   };
 
-  showCart() {
-
-  }
-
-  showAuth() {
-
-  }
-
   hideSearch(e) {
     if (e.target === this.searchInput.current)
       return;
@@ -67,13 +59,13 @@ export default class Menu extends React.Component {
           </a>
         </li>
         <li>
-          <a onClick={this.showCart}>
+          <a onClick={this.props.showCart}>
             <i className={'fas fas fa-shopping-cart'}></i>
             <span>0 Items</span>
           </a>
         </li>
         <li>
-          <a onClick={this.showAuth} >
+          <a onClick={this.props.login} >
             <i className={'fas fa-user'}></i>
             <span>Login/Signup</span>
           </a>

@@ -1,6 +1,4 @@
 import React from 'react';
-import { faFacebook, faInstagram, faTwitter } from '@fortawesome/fontawesome-free-brands';
-
 
 export default function Footer(props) {
   return (

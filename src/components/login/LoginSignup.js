@@ -1,24 +1,25 @@
 import React from 'react';
-import { Tabs, Tab } from 'react-bootstrap';
 import Signin from './Signin';
 import Signup from './Signup';
+
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 export default function LoginSignup(props) {
   const { handleSignup, handleSignin } = props;
   return (
     <div className={'login-signup'}>
-      <Tabs
-        defaultActiveKey={1}
-        id="login-signup-tabs"
-        className={'tabs'}
-        style={{margin: 'auto', width: '50%'}}>
-        <Tab eventKey={1} title="Log In">
+      <Tabs>
+        <TabList>
+          <Tab>Sign In</Tab>
+          <Tab>Sign Up</Tab>
+        </TabList>
+        <TabPanel>
           <Signin onSubmit={handleSignin}/>
-        </Tab>
-        <Tab eventKey={2} title="Sign Up">
+        </TabPanel>
+        <TabPanel>
           <Signup onSubmit={handleSignup}/>
-        </Tab>
-      </Tabs>;
+        </TabPanel>
+      </Tabs>
     </div>
   );
 }

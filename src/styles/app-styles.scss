@@ -3,7 +3,7 @@
 @import 'admin';
 
 @import '~bootstrap/scss/bootstrap-grid';
-
+@import '~react-tabs/style/react-tabs.scss';
 
 body {
   font-family: 'Roboto Mono', monospace;
@@ -66,12 +66,22 @@ body {
     flex-direction: row;
 
     ul {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      height: 2.5em;
+
       list-style: none;
-      padding: .5em 1em;
+      padding: 0 1em;
 
       li {
-        display: inline-block;
+        //display: inline-block;
         margin: 0 1em;
+
+        a {
+          display: block;
+          height: 2em;
+        }
       }
     }
 

@@ -6,8 +6,6 @@ import {
 } from './actionTypes';
 
 
-import axios from 'axios';
-
 export function userSignedIn(userData) {
   return {
     type: USER_SIGNUP_SUCCESS,

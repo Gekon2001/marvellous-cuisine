@@ -117,7 +117,11 @@ export default class Product extends React.Component {
               <label htmlFor={'categorySelect'}>Category</label>
             </div>
             <div className={'col-sm-3'}>
-              <select id={'categorySelect'} value={category} onChange={handleFieldChange}>
+              <select
+                id={'categorySelect'}
+                value={category}
+                onChange={handleFieldChange}
+                name={'category'} >
                 <option value={'cakes'}>Cakes</option>
                 <option value={'drinks'}>Drinks</option>
               </select>

@@ -21,9 +21,7 @@ export default {
   },
   async get(url, params) {
     try {
-      const result = await _axios.get(url, params);
-      console.log(result);
-      // const { data } = await _axios.get(url, params);
+      const { data } = await _axios.get(url, params);
       return data;
     } catch(error) {
       return error.response.data;

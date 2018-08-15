@@ -3,19 +3,21 @@ import React from 'react';
 import ImageUploader from 'Components/image-uploader/ImageUploader';
 import utils from 'Utils';
 
+const initialState = {
+  name: '',
+  category: '',
+  description: '',
+  price: '',
+  amount: '',
+  published: false,
+  pictures: []
+};
+
 export default class Product extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state  = {
-      name: '',
-      category: '',
-      description: '',
-      price: 0,
-      amount: 0,
-      published: false,
-      pictures: []
-    };
+    this.state  = Object.assign({}, initialState);
 
     this.handleFieldChange = this.handleFieldChange.bind(this);
     this.handleGalleryChange = this.handleGalleryChange.bind(this);
@@ -70,8 +72,13 @@ export default class Product extends React.Component {
       if (response.error)
         return console.error(response.error);
 
-      alert('Product saved. IMPLEMENT');
+      alert('Saved');
 
+      if (e.target.name ==='save-and-new') {
+        this.setState(Object.assign({}, initialState));
+      } else {
+        this.props.history.push('/admin/products');
+      }
     });
 
     return false;
@@ -96,7 +103,7 @@ export default class Product extends React.Component {
 
     return (
       <div className={'col'}>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className={'row form-controls-row'}>
             <div className={'col-sm-3'}>
               <label htmlFor='nameInput'>Name</label>
@@ -181,8 +188,29 @@ export default class Product extends React.Component {
             </div>
           </div>
           <div className={'row form-buttons-row'}>
-            <button disabled={ !changed} type={'submit'} className={'action-button'}>Save</button>
-            <button type={'button'} className={'action-button'} onClick={handleCancel}>Cancel</button>
+            <input
+              disabled={!changed}
+              type={'button'}
+              className={'action-button'}
+              name={'save'}
+              value={'Save'}
+              onClick={handleSubmit}
+            />
+            <input
+              disabled={!changed }
+              type={'button'}
+              className={'action-button'}
+              name={'save-and-new'}
+              value={'Save and new'}
+              onClick={handleSubmit}
+            />
+            <input
+              type={'button'}
+              className={'action-button'}
+              name={'cancel'}
+              value={'Cancel'}
+              onClick={handleCancel}
+            />
           </div>
         </form>
       </div>

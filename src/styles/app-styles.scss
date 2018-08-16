@@ -2,7 +2,9 @@
 @import 'const';
 @import 'admin';
 
+@import '~bootstrap/scss/bootstrap-reboot';
 @import '~bootstrap/scss/bootstrap-grid';
+@import '~bootstrap/scss/tables';
 @import '~react-tabs/style/react-tabs.scss';
 
 body {
@@ -117,6 +119,9 @@ body {
   }
 }
 
+.product-table-row {
+  cursor: pointer;
+}
 
 
 //footer styles

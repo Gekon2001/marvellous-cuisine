@@ -36,51 +36,40 @@ export default class Menu extends React.Component {
     });
   };
 
-  renderSearch() {
-    return (
-      <li>
-        <input
-          type="text"
-          placeholder="Search"
-          onChange={this.handleSearchChange}
-          ref={this.searchInput} />
-        <i className={'fas fa-search'}></i>
-      </li>
-    );
-  }
-
-  renderMenuItems() {
-    return (
-      <React.Fragment>
-        <li>
-          <a onClick={this.showSearch}>
-            <i className={'fas fa-search'}></i>
-            <span>Search</span>
-          </a>
-        </li>
-        <li>
-          <a onClick={this.props.showCart}>
-            <i className={'fas fas fa-shopping-cart'}></i>
-            <span>0 Items</span>
-          </a>
-        </li>
-        <li>
-          <a onClick={this.props.login} >
-            <i className={'fas fa-user'}></i>
-            <span>Login/Signup</span>
-          </a>
-        </li>
-      </React.Fragment>
-    );
-  }
-
   render() {
     const  { searchActive } = this.state;
     return (
       <ul className={'header-menu'}>
-        { searchActive
-          ? this.renderSearch()
-          : this.renderMenuItems()
+        <li className={'header-menu-item item-search'}>
+          <a onClick={this.showSearch}>
+            <i className={'fas fa-search'}></i>
+            {
+              searchActive
+                ? <input
+                    type="text"
+                    placeholder="Search"
+                    onChange={this.handleSearchChange}
+                    ref={this.searchInput} />
+                : <span>Search</span>
+            }
+          </a>
+        </li>
+        {
+          !searchActive &&
+            <React.Fragment>
+              <li className={'header-menu-item item-cart'}>
+                <a onClick={this.props.showCart}>
+                  <i className={'fas fas fa-shopping-cart'}></i>
+                  <span>0 Items</span>
+                </a>
+              </li>
+              <li className={'header-menu-item item-login'}>
+                <a onClick={this.props.login} >
+                  <i className={'fas fa-user'}></i>
+                  <span>Login/Signup</span>
+                </a>
+              </li>
+            </React.Fragment>
         }
       </ul>
     );

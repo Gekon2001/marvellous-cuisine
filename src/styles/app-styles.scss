@@ -58,57 +58,128 @@ body {
   }
 
   nav.app-nav {
-    width: 95%;
-    margin: 0 auto;
-    padding: 1em;
+    $header-height: 3.5em;
 
-    border-bottom: 1px solid $default-color-dark;
-
-    display: flex;
-    flex-direction: row;
+    width: 100%;
 
     ul {
+      list-style: none;
+    }
+
+    .nav-items {
+      border-bottom: 1px solid $default-color-dark;
+
       display: flex;
       flex-direction: row;
       align-items: stretch;
-      height: 2.5em;
 
-      list-style: none;
-      padding: 0 1em;
+      flex-wrap: nowrap;
+      justify-content: space-between;
 
-      li {
-        //display: inline-block;
-        margin: 0 1em;
 
-        a {
-          display: block;
-          height: 2em;
+      .app-logo {
+        height: $header-height;
+        line-height: $header-height;
+        .home-link {
+          color: $default-color;
+          text-decoration: none;
+        }
+      }
+
+      .links {
+        .links-container {
+          display: flex;
+          flex-direction: row;
+          align-items: stretch;
+          height: $header-height;
+
+          .link-container {
+            margin: 0;
+            padding: 0;
+
+            display: flex;
+            align-items: stretch;
+
+            color: $default-color;
+
+            :hover {
+              background-color: $default-bg-dark-color;
+              color: $default-color;
+              cursor: pointer;
+            }
+
+            a.nav-link {
+              width: 100%;
+              margin: 0 1px;
+              padding: 0 2em;
+
+              color: $default-color-dark;
+
+              font-weight: bold;
+
+              height: $header-height;
+              line-height: $header-height;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+
+      .app-menu {
+        width: 400px;
+
+        .header-menu {
+          display: flex;
+          flex-direction: row;
+          align-items: stretch;
+
+          height: $header-height;
+
+
+          @mixin search-active($active) {
+            .header-menu-item {
+              display: flex;
+              align-items: stretch;
+
+              margin: 0 .5em;
+              padding: 0;
+
+              height: $header-height;
+              line-height: $header-height;
+
+              i {
+                margin-right: .2em;
+                line-height: $header-height;
+              }
+
+              input {
+                border-radius: .9em;
+                padding: .9em;
+                min-width: 300px;
+                width: auto;
+                line-height: 2em;
+                height: 2em;
+              }
+            }
+          }
+
+          @include search-active(false);
+          &.search-active {
+            @include search-active(true);
+          }
         }
       }
     }
-
-    .header-menu {
-      i {
-        margin-right: .2em;
-      }
-    }
-
-    .header, .header-menu, links {
-      height: 2em;
-      padding: .5em;
-      margin: .5em;
-    }
-
-    .links {
-      li {
-        :hover {
-          background-color: $default-bg-dark-color;
-        }
-      }
-    }
-
   }
 
+  .shop {
+
+    .product-thumbnail {
+      width: 23%;
+      margin-bottom: 40px;
+      position: relative;
+    }
+  }
   .form-controls-row {
     margin: 1em .5em;
 
@@ -272,60 +343,60 @@ a {
 
 //pagination styles
 
-.pagination > li > a.linkPaginate {
-  padding: 6px 12px;
-  margin-left: 0;
-  position: relative;
-  float: left;
-  line-height: 1.42857143;
-  color: $default-color-dark;
-  text-decoration: none;
-  background-color: transparent;
-  //border: none;
-
-}
-
-.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span {
-  z-index: 3;
-  color: #fff;
-  cursor: default;
-  background-color: $default-color-dark;
-  border-color: $default-color;
-}
-
-.pagination > .active > a, .pagination > .active > span,
-.pagination > .active > a:hover,
-.pagination > .active > span:hover,
-.pagination > .active > a:focus,
-.pagination > .active > span:focus {
-  border-color: $default-color;
-  //border-width: 3px;
-  //margin-left: 5px;
-  //margin-right: 5px;
-}
-
-.pagination > li > a.nextLink {
-  background-color: transparent;
-  color: $default-color-dark;
-}
-
-.pagination > li > a.previousLink {
-
-  background-color: transparent;
-  color: $default-color-dark;
-}
-.pagination > a.disabled {
-  background-color: darkgrey;
-}
-
-.pagination > .disabled > span,
-.pagination > .disabled > span:hover,
-.pagination > .disabled > span:focus,
-.pagination > .disabled > a,
-.pagination > .disabled > a:hover,
-.pagination > .disabled > a:focus {
-  color: black;
-  cursor: not-allowed;
-  background-color: transparent;
-  //border: none;
-}
+//.pagination > li > a.linkPaginate {
+//  padding: 6px 12px;
+//  margin-left: 0;
+//  position: relative;
+//  float: left;
+//  line-height: 1.42857143;
+//  color: $default-color-dark;
+//  text-decoration: none;
+//  background-color: transparent;
+//  //border: none;
+//
+//}
+//
+//.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span {
+//  z-index: 3;
+//  color: #fff;
+//  cursor: default;
+//  background-color: $default-color-dark;
+//  border-color: $default-color;
+//}
+//
+//.pagination > .active > a, .pagination > .active > span,
+//.pagination > .active > a:hover,
+//.pagination > .active > span:hover,
+//.pagination > .active > a:focus,
+//.pagination > .active > span:focus {
+//  border-color: $default-color;
+//  //border-width: 3px;
+//  //margin-left: 5px;
+//  //margin-right: 5px;
+//}
+//
+//.pagination > li > a.nextLink {
+//  background-color: transparent;
+//  color: $default-color-dark;
+//}
+//
+//.pagination > li > a.previousLink {
+//
+//  background-color: transparent;
+//  color: $default-color-dark;
+//}
+//.pagination > a.disabled {
+//  background-color: darkgrey;
+//}
+//
+//.pagination > .disabled > span,
+//.pagination > .disabled > span:hover,
+//.pagination > .disabled > span:focus,
+//.pagination > .disabled > a,
+//.pagination > .disabled > a:hover,
+//.pagination > .disabled > a:focus {
+//  color: black;
+//  cursor: not-allowed;
+//  background-color: transparent;
+//  //border: none;
+//}

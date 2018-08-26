@@ -14,16 +14,22 @@ class Header extends React.Component {
   render() {
     return (
       <nav className={'app-nav'}>
-        <ul className={'header'}>
-          <li><a href={'/'}>Marvellous Cuisine</a></li>
+        <ul className={'nav-items'}>
+          <li className={'app-logo'}>
+            <a className={'home-link'} href={'/'} target={'_self'}>Marvellous Cuisine</a>
+          </li>
+          <li className={'links'}>
+            <ul className={'links-container'}>
+              <li className={'link-container'}><Link className={'nav-link'} to={'/'}>Home</Link></li>
+              <li className={'link-container'}><Link className={'nav-link'} to={'/shop'}>Shop</Link></li>
+              <li className={'link-container'}><Link className={'nav-link'} to={'/blog'}>Blog</Link></li>
+              <li className={'link-container'}><Link className={'nav-link'} to={'/about'}>About</Link></li>
+            </ul>
+          </li>
+          <li className={'app-menu'}>
+            <Menu login={this.props.login} showCart={this.props.showCart}/>
+          </li>
         </ul>
-        <ul className={'links'}>
-          <li><Link to={'/'}>Home</Link></li>
-          <li><Link to={'/shop'}>Shop</Link></li>
-          <li><Link to={'/blog'}>Blog</Link></li>
-          <li><Link to={'/about'}>About</Link></li>
-        </ul>
-        <Menu login={this.props.login} showCart={this.props.showCart}/>
       </nav>
     );
   }

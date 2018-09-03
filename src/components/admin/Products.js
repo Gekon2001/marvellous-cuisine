@@ -51,7 +51,7 @@ export default class Products extends React.Component {
             </thead>
             { this.state.products && (
               <tbody>
-                { this.state.products.map(this.renderProduct) }
+                {  this.state.products.map(this.renderProduct) }
               </tbody>
             )}
           </table>

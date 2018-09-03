@@ -47,7 +47,7 @@ export default class Admin extends React.Component {
 
   async componentDidMount() {
     try {
-      const response = await utils.request.get('/api/categories');
+      const response = await utils.request.get('/api/categories') || [];
     } catch(error) {
 
     }

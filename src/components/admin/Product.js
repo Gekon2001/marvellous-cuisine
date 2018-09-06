@@ -242,14 +242,9 @@ export default class Product extends React.Component {
     );
   }
   componentDidMount() {
-    const product = utils.request.get('/api/products/?code=1');
-    product.then(
+    utils.request.get(`/api/product/${this.props.match.params.code}`).then(
       result => {
-        this.setState({...this.state, ...result.filter( 
-          item => (
-            item.code == this.props.match.params.code
-          )
-        )[0], loaded: true})
+        this.setState({...this.state, ...result, loaded: true})
       }
     )
   }
